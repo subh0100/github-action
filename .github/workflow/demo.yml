@@ -1,0 +1,21 @@
+# 1. The name of the workflow as it appears in the GitHub UI
+name: My First GitHub Action
+
+# 2. The event that triggers this workflow
+on: [push]
+
+# 3. The group of jobs to execute
+jobs:
+  say-hello-job:
+    # Tell GitHub to run this job on a fresh Ubuntu virtual machine
+    runs-on: ubuntu-latest
+
+    # The sequence of tasks to perform
+    steps:
+      # Step A: Clones your repository code onto the runner
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      # Step B: Runs a standard terminal command
+      - name: Print a custom message
+        run: echo "Hello, world! Your automated pipeline is working."
