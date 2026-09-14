@@ -1,12 +1,16 @@
-name: hello
+name: hello with inputs
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+    inputs:
+      greeting_name:
+        description: 'Who do you want to say hi to?'
+        required: true
+        default: 'World'
 
 jobs:
   demo:
     runs-on: ubuntu-latest
     steps:
-      - name: gret
-        run: echo "hi"
+      - name: greet user
+        run: echo "hi ${{ github.event.inputs.greeting_name }}"
